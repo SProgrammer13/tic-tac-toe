@@ -8,6 +8,24 @@
 
 }
 
+h1 {
+  margin-bottom: 60px;
+  width: 100%;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aliceblue;
+  color: black;
+}
+
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .row {
   display: flex;
 }
@@ -20,4 +38,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.player {
+  display: flex;
+  justify-content: center;
+  margin: 30px 15px;
+  align-items: center;
+  width: 10em;
+  padding: 1.2em 0;
+  cursor: pointer;
+}
+
+.player.one {
+  background-color: #ec4141;
+  border: none;
+}
+
+.player.two {
+  background-color: #4185ec;
+  border: none;
+}
+
+.player.one:hover {
+   background-color: #c71212;
+}
+.player.two:hover {
+   background-color: #0d61e0;
+;
 }
