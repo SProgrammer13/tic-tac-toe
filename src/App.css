@@ -40,7 +40,7 @@ h1 {
   align-items: center;
 }
 
-.btn-box {
+.player-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +54,6 @@ h1 {
   align-items: center;
   width: 10em;
   padding: 1.2em 0;
-  cursor: pointer;
 }
 
 .player.one {

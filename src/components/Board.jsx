@@ -4,8 +4,32 @@ import Square from './Square'
 
 function Board(){
     const [squares, setSquares] = useState(Array(9).fill(null))
+    const [isNextX, setIsNextX] = useState(true)
 
     function squareClickCheck(index){
+        if(squares[index]!=null) return;
+        const squaresNew = squares.slice();
+        squaresNew[index] = isNextX ? 'X': '0'
+         setSquares(squaresNew)
+        setIsNextX(!isNextX)
+        checkWinner(squaresNew)
+    }
+    function checkWinner(squares){
+        const winnerLines = [
+            [0, 1, 2],  
+            [3, 4, 5],  
+            [6, 7, 8],
+            [0, 3, 6],  
+            [1, 4, 7],  
+            [2, 5, 8], 
+            [0, 4, 8], 
+            [2, 4, 6], 
+        ];
+        for (const line of winnerLines){
+            if(squares[line[0]] && squares[line[0]] === squares[line[1]] && squares[line[0]] === squares[line[2]]){
+                alert(squares[line[0]] + 'won!')
+            }
+        }
 
     }
 
@@ -27,9 +51,9 @@ function Board(){
                 <Square value={squares[7]} squareClickCheck={() => squareClickCheck(7)}></Square>
                 <Square value={squares[8]} squareClickCheck={() => squareClickCheck(8)}></Square>
             </div>
-            <div className="btn-box">
-                <button className='player one'>Player 1</button>
-                <button className='player two'>Player 2</button>
+            <div className="player-box">
+                <div className='player one'>Player 1</div>
+                <div className='player two'>Player 2</div>
             </div>
         </div>
     )
