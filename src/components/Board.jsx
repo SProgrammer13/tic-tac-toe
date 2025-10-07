@@ -10,8 +10,8 @@ function Board(){
         if(squares[index]!=null) return;
         const squaresNew = squares.slice();
         squaresNew[index] = isNextX ? 'X': '0'
-         setSquares(squaresNew)
         setIsNextX(!isNextX)
+        setSquares(squaresNew)
         checkWinner(squaresNew)
     }
     function checkWinner(squares){
