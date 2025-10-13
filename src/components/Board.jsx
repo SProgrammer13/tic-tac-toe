@@ -5,6 +5,8 @@ import Square from './Square'
 function Board(){
     const [squares, setSquares] = useState(Array(9).fill(null))
     const [isNextX, setIsNextX] = useState(true)
+    const [stopGame, setStopGame] = useState(false)
+
 
     function squareClickCheck(index){
         if(squares[index]!=null) return;
@@ -27,11 +29,16 @@ function Board(){
         ];
         for (const line of winnerLines){
             if(squares[line[0]] && squares[line[0]] === squares[line[1]] && squares[line[0]] === squares[line[2]]){
-                alert(squares[line[0]] + 'won!')
+                alert('Winner is ' + squares[line[0]])
+                setSquares(Array(9).fill(null))
+                setStopGame(true)
             }
         }
 
+        if(stopGame === true) return;
+
     }
+
 
     return (
         <div className='board'>
