@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import Square from './Square'
+import Modal from './Modal'
 
 
 function Board(){
     const [squares, setSquares] = useState(Array(9).fill(null))
     const [isNextX, setIsNextX] = useState(true)
     const [stopGame, setStopGame] = useState(false)
+    const [winner, setWinner] = useState('')
 
 
     function squareClickCheck(index){
@@ -29,14 +31,20 @@ function Board(){
         ];
         for (const line of winnerLines){
             if(squares[line[0]] && squares[line[0]] === squares[line[1]] && squares[line[0]] === squares[line[2]]){
-                alert('Winner is ' + squares[line[0]])
-                setSquares(Array(9).fill(null))
+                setWinner(squares[line[0]])
                 setStopGame(true)
             }
         }
-
-        if(stopGame === true) return;
-
+        if(squares.every(square => square!=null)){
+            setStopGame(true)
+        }
+             
+    }
+    function restartGame(){
+         setSquares(Array(9).fill(null))
+         setStopGame(false)
+         setIsNextX(true)
+         setWinner('')
     }
 
 
@@ -62,6 +70,7 @@ function Board(){
                 <div className='player one'>Player 1</div>
                 <div className='player two'>Player 2</div>
             </div>
+            <Modal winner={winner} showWindow={stopGame} onBtnClick={restartGame}></Modal>
         </div>
     )
 }
