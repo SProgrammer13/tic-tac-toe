@@ -9,6 +9,8 @@ function Board(){
     const [stopGame, setStopGame] = useState(false)
     const [winner, setWinner] = useState('')
 
+    let playerOne = 
+
 
     function squareClickCheck(index){
         if(squares[index]!=null) return;
@@ -40,6 +42,12 @@ function Board(){
         }
              
     }
+    function playerChoise(){
+       if(div.className == 'player one'){
+        alert('Player one steps');
+       }
+    }
+
     function restartGame(){
          setSquares(Array(9).fill(null))
          setStopGame(false)
@@ -67,8 +75,8 @@ function Board(){
                 <Square value={squares[8]} squareClickCheck={() => squareClickCheck(8)}></Square>
             </div>
             <div className="player-box">
-                <div className='player one'>Player 1</div>
-                <div className='player two'>Player 2</div>
+                <div onClick={playerChoise} className='player one'>Player 1</div>
+                <div onClick={playerChoise} className='player two'>Player 2</div>
             </div>
             <Modal winner={winner} showWindow={stopGame} onBtnClick={restartGame}></Modal>
         </div>
