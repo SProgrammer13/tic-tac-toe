@@ -12,6 +12,7 @@ function Board(){
 
 
     function squareClickCheck(index){
+        if(!startGame) return;
         if(squares[index]!=null) return;
         const squaresNew = squares.slice();
         squaresNew[index] = isNextX ? 'X': '0'
@@ -44,12 +45,10 @@ function Board(){
     function playerChoise(event){
         if(startGame) return;
         const div = event.target;
-       if(div.className.contains('player one')){
-        alert("X")
+       if(div.className.includes('player one')){
         setIsNextX(true);
        }
-       if(div.className.contains('player two')){
-        alert("0")
+       if(div.className.includes('player two')){
         setIsNextX(false);
        }
         setStartGame(true)
