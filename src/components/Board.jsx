@@ -8,8 +8,7 @@ function Board(){
     const [isNextX, setIsNextX] = useState(true)
     const [stopGame, setStopGame] = useState(false)
     const [winner, setWinner] = useState('')
-
-    let playerOne = 
+    const [startGame, setStartGame] = useState(false)
 
 
     function squareClickCheck(index){
@@ -42,10 +41,18 @@ function Board(){
         }
              
     }
-    function playerChoise(){
-       if(div.className == 'player one'){
-        alert('Player one steps');
+    function playerChoise(event){
+        if(startGame) return;
+        const div = event.target;
+       if(div.className.contains('player one')){
+        alert("X")
+        setIsNextX(true);
        }
+       if(div.className.contains('player two')){
+        alert("0")
+        setIsNextX(false);
+       }
+        setStartGame(true)
     }
 
     function restartGame(){
@@ -53,6 +60,7 @@ function Board(){
          setStopGame(false)
          setIsNextX(true)
          setWinner('')
+         setStartGame(false)
     }
 
 
@@ -74,9 +82,10 @@ function Board(){
                 <Square value={squares[7]} squareClickCheck={() => squareClickCheck(7)}></Square>
                 <Square value={squares[8]} squareClickCheck={() => squareClickCheck(8)}></Square>
             </div>
+            <div>{!startGame && <h3>Choose your sign!</h3>}</div>
             <div className="player-box">
-                <div onClick={playerChoise} className='player one'>Player X</div>
-                <div onClick={playerChoise} className='player two'>Player O</div>
+                <div onClick={playerChoise} className={`player one ${isNextX ? 'active' : ''}`}>Player X</div>
+                <div onClick={playerChoise} className={`player two ${!isNextX ? 'active' : ''}`}>Player O</div>
             </div>
             <Modal winner={winner} showWindow={stopGame} onBtnClick={restartGame}></Modal>
         </div>

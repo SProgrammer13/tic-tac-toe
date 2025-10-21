@@ -54,6 +54,8 @@ h1 {
   align-items: center;
   width: 10em;
   padding: 1.2em 0;
+  cursor: pointer;
+   opacity: 0.4;
 }
 
 .player.one {
@@ -66,12 +68,8 @@ h1 {
   border: none;
 }
 
-.player.one:hover {
-   background-color: #c71212;
-}
-.player.two:hover {
-   background-color: #0d61e0;
-
+.player.active {
+  opacity: 1;
 }
 
 .overlay {
