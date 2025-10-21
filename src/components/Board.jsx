@@ -75,8 +75,8 @@ function Board(){
                 <Square value={squares[8]} squareClickCheck={() => squareClickCheck(8)}></Square>
             </div>
             <div className="player-box">
-                <div onClick={playerChoise} className='player one'>Player 1</div>
-                <div onClick={playerChoise} className='player two'>Player 2</div>
+                <div onClick={playerChoise} className='player one'>Player X</div>
+                <div onClick={playerChoise} className='player two'>Player O</div>
             </div>
             <Modal winner={winner} showWindow={stopGame} onBtnClick={restartGame}></Modal>
         </div>
