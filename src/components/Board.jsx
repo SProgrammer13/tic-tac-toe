@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useEffect } from 'react';
 import Square from './Square'
 import Modal from './Modal'
 
@@ -9,6 +10,8 @@ function Board(){
     const [stopGame, setStopGame] = useState(false)
     const [winner, setWinner] = useState('')
     const [startGame, setStartGame] = useState(false)
+    let timer = 60;
+    const [time, setTime] = useState(timer)
 
 
     function squareClickCheck(index){
@@ -42,6 +45,7 @@ function Board(){
         }
              
     }
+
     function playerChoise(event){
         if(startGame) return;
         const div = event.target;
@@ -53,6 +57,14 @@ function Board(){
        }
         setStartGame(true)
     }
+
+    useEffect(() => {
+        if(startGame){
+            setInterval(() => {
+            setTime(current => current-1)
+        }, 1000)
+       }})
+
 
     function restartGame(){
          setSquares(Array(9).fill(null))
@@ -66,6 +78,7 @@ function Board(){
     return (
         <div className='board'>
              <h1>Tic-tac-toe</h1>
+             <div className='timer'>{time}</div>
             <div className="row one">
                 <Square value={squares[0]} squareClickCheck={() => squareClickCheck(0)}></Square>
                 <Square value={squares[1]} squareClickCheck={() => squareClickCheck(1)}></Square>
