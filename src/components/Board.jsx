@@ -10,7 +10,7 @@ function Board(){
     const [stopGame, setStopGame] = useState(false)
     const [winner, setWinner] = useState('')
     const [startGame, setStartGame] = useState(false)
-    const [time, setTime] = useState(60)
+    const [time, setTime] = useState(30)
 
 
     function squareClickCheck(index){
@@ -56,12 +56,23 @@ function Board(){
         setIsNextX(false);
        }
         setStartGame(true)
-        if(startGame){
-            setInterval(() => {
-            setTime(time-1)
+    }
+
+    useEffect(() => {
+        let interval = null;
+       if(startGame){
+        interval = setInterval(() => {
+            setTime((time) => {
+                if(time <= 1){
+                    setStopGame(true)
+                    return 0;
+                }
+                return time-1})
         }, 1000)
        }
-    }
+       return () => {
+        clearInterval(interval);
+       }}, [startGame])
 
 
 
@@ -71,6 +82,7 @@ function Board(){
          setIsNextX(true)
          setWinner('')
          setStartGame(false)
+         setTime(30)
     }
 
 
