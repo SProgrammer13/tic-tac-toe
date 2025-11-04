@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useEffect } from 'react';
 import Square from './Square'
 import Modal from './Modal'
+import { BrowserRouter } from 'react-router-dom';
 
 
 function Board(){
