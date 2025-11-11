@@ -94,7 +94,7 @@ h1 {
   border: 2px solid #6c6c6c;
 }
 
-.modal-window button {
+.restart-btn {
   cursor: pointer;
   border: none;
   background: #2aff91;

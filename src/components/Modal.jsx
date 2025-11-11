@@ -8,7 +8,7 @@ function Modal({winner, showWindow, onBtnClick}){
                 <p>
                     {winner != '' ? `Winner is ${winner}!` : 'Tie!'}
                 </p>
-                <button onClick={onBtnClick}>Play again</button>
+                <button className="restart-btn" onClick={onBtnClick}>Play again</button>
             </div>
         </div>
     )

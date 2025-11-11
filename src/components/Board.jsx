@@ -6,12 +6,17 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 function Board(){
+    const { timeLimit, setTimeLimit, theme, setTheme } = useGame();
     const [squares, setSquares] = useState(Array(9).fill(null))
     const [isNextX, setIsNextX] = useState(true)
     const [stopGame, setStopGame] = useState(false)
     const [winner, setWinner] = useState('')
     const [startGame, setStartGame] = useState(false)
-    const [time, setTime] = useState(30)
+    const [time, setTime] = useState(timeLimit)
+
+    useEffect(() => {
+        setTime(timeLimit)
+    }, [timeLimit])
 
 
     function squareClickCheck(index){
@@ -83,7 +88,7 @@ function Board(){
          setIsNextX(true)
          setWinner('')
          setStartGame(false)
-         setTime(30)
+         setTime(timeLimit)
     }
 
 
